@@ -67,7 +67,16 @@ if (from === "vscode") {
   scheme.base.string = tokenColors.string.settings.foreground
   scheme.base.number = tokenColors["constant.numeric"].settings.foreground
   scheme.base.boolean = tokenColors["constant.language.boolean"].settings.foreground
-  
+  scheme.base.cursor = inputJson.colors["editorCursor.foreground"]
+
+  /* 
+    VSCode optionally allows an "editorCursor.background" colour, which sets the colour of text inside a block cursor. If that property is set, use it here - otherwise, fall back to the editor background colour.
+  */
+  if (inputJson.colors["editorCursor.background"]) {
+    scheme.base.cursorText = inputJson.colors["editorCursor.background"]
+  } else {
+    scheme.base.cursorText = inputJson.colors["editor.background"]
+  }
 }
 
 if (to === "vim") {
@@ -97,6 +106,7 @@ function formatScheme(scheme, to) {
     formattedScheme.colors.Comment = generateVimColorSet(scheme.base.comment, scheme.base.background)
     formattedScheme.colors.Boolean = generateVimColorSet(scheme.base.boolean, scheme.base.background)
     formattedScheme.colors.LineNr = generateVimColorSet(scheme.base.lineNumber, scheme.base.background)
+    formattedScheme.colors.Cursor = generateVimColorSet(scheme.base.cursor, scheme.base.cursorText)
   }
   return formattedScheme
 }
