@@ -1,0 +1,15 @@
+" ===============================================================
+" {{ name }}
+
+set background={{ type }}
+hi clear
+
+if exists("syntax_on")
+syntax reset
+endif
+
+let g:colors_name="{{ name }}"
+
+{{#each colors}}
+hi {{@key}} guifg={{this.guifg}} ctermfg={{this.ctermfg}} guibg={{this.guibg}} ctermbg={{this.ctermbg}}
+{{/each}}
