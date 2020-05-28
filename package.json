@@ -12,7 +12,8 @@
   "dependencies": {
     "color-convert": "^2.0.1",
     "handlebars": "^4.7.6",
-    "jsonc-parser": "^2.2.1"
+    "jsonc-parser": "^2.2.1",
+    "prompts": "^2.3.2"
   },
   "devDependencies": {
     "eslint": "^7.1.0",

@@ -1,14 +1,9 @@
-// when themeverter is run without any arguments, invoke the wizard which will ask for the input file, the source and the destination application.
-// themeverter accepts a --file argument that specifies the input file
-// themeverter will attempt to determine the source program automatically (e.g. .json file = vscode (but better)). if the 'from' app can't be determined automatically, bail out (?) and ask for a --from argument
-// themeverter accepts a --from  argument that specifies which application the colour scheme is coming from (e.g. "vscode")
-// it also accepts a --to argument that specifies which application the colour scheme should be ported to (e.g. "vim")
-// themeverter will also create an intermediate YAML file that specifies the colour scheme in a format that can be converted to any other format (i.e. a blueprint for all apps)
 const fs = require("fs"); // Node.js File System module
 const jsoncParser = require("jsonc-parser"); // Parser for JSONC (JSON with Comments) used by VSCode themes
 const handlebars = require("handlebars"); // Templating library for JavaScript
 const convert = require("color-convert"); // Convert colours between formats
 
+const testVSCodeTheme = "udt.json"
 let from = "vscode"; // The application the colour scheme is being ported from
 let to = "vim"; // The application the colour scheme is being ported to
 
@@ -27,7 +22,7 @@ let scheme = {
 };
 
 if (from === "vscode") {
-	let inputFile = fs.readFileSync("nol.json", "utf8"); // Read the --input file
+	let inputFile = fs.readFileSync(testVSCodeTheme, "utf8"); // Read the --input file
 	let inputJson = jsoncParser.parse(inputFile); // Parse the --input file as a JS object
 
 	/* Turn VSCode token colours into a format that's easier to work with. */
@@ -59,7 +54,14 @@ if (from === "vscode") {
 		}
 	}
 
-	scheme.name = inputJson.name; // Set the name of the color scheme
+  // Set the name of the color scheme. The 'name' property is optional in VSCode themes.
+  if (inputJson.name) {
+    // The theme file includes a name, so use that
+    scheme.name = inputJson.name; 
+  } else {
+    // The theme file doesn't specify a name
+    // TODO use prompts to request a name from the user
+  }
 	scheme.vim.background = inputJson.type; // type in VSCode themes is either "light" or "dark"
 	scheme.base.normal = inputJson.colors.foreground; // base colour for text
 	scheme.base.background = inputJson.colors["editor.background"]; // Background colour of the editor
