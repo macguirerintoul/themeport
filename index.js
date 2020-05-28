@@ -89,10 +89,11 @@ const formattedScheme = formatScheme(scheme, to);
 generate(formattedScheme, to);
 
 /**
- * For each lexical item, Vim requires a foreground colour and a background colour. In addition, there should be a colour specified for GUI versions of Vim as well as terminal versions.
+ * Generates an object with a property for each Vim highlight parameter. For each lexical item, Vim requires a foreground colour and a background colour. In addition, there should be a colour specified for GUI versions of Vim as well as terminal versions.
  *
- * @param {string} foreground
- * @param {string} background
+ * @param {string} foreground - the colour of text (to be used in *fg)
+ * @param {string} background - the colour of the background (to be used in *bg)
+ * @return {object} Object with properties for each Vim higlight parameter
  */
 function generateVimColorSet(foreground, background) {
 	return {
@@ -102,7 +103,12 @@ function generateVimColorSet(foreground, background) {
 		ctermbg: convert.hex.ansi256(background),
 	};
 }
-
+/**
+ * Formats the scheme argument to be suitable for the 'to' application.
+ * @param {object} scheme - the Themeverter scheme object to be formatted
+ * @param {string} to - the application to format for
+ * @return {object} the formatted colour scheme to be used in the {@link generate} function
+ */
 function formatScheme(scheme, to) {
 	let formattedScheme = {
 		name: scheme.name,
@@ -137,6 +143,11 @@ function formatScheme(scheme, to) {
 	return formattedScheme;
 }
 
+/**
+ * Writes a colour scheme to a file.
+ * @param {object} formattedScheme - a formatted Themeverter scheme suitable for the 'to' application
+ * @param {string} to - the application to port the colour scheme to 
+ */
 function generate(formattedScheme, to) {
 	const template = handlebars.compile(
 		fs.readFileSync("./templates/" + to + ".hbs", "utf8")
