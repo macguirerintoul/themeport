@@ -1,5 +1,5 @@
 " ===============================================================
-" 
+" udt
 
 set background=
 hi clear
@@ -8,7 +8,7 @@ if exists("syntax_on")
 syntax reset
 endif
 
-let g:colors_name=""
+let g:colors_name="udt"
 
 hi Normal guifg=#333333 ctermfg=236 guibg=#f5f5f5 ctermbg=255
 hi Comment guifg=#a8528b ctermfg=139 guibg=#f5f5f5 ctermbg=255

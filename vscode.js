@@ -37,15 +37,19 @@ module.exports = {
 			}
 		}
 
-		// Set the name of the color scheme. The 'name' property is optional in VSCode themes, so check for it and if it isn't present, ask the user for it.
-		scheme.name = inputJson.name
-			? inputJson.name
-			: await prompts({
-					type: "text",
-					name: "name",
-					message: "Couldn't find scheme name. Please enter one:",
-			  }).name;
-
+    // Set the name of the color scheme. The 'name' property is optional in VSCode themes, so check for it and if it isn't present, ask the user for it.
+    if (inputJson.name) {
+      scheme.name = inputJson.name
+    } else {
+      let userInput = await prompts({
+        type: "text",
+        name: "name",
+        message: "Couldn't find scheme name. Please enter one:",
+      });
+      scheme.name = userInput.name
+      console.log("end of else, ", scheme.name)
+    }
+		console.log("first line after else")
 		scheme.vim.background = inputJson.type; // type in VSCode themes is either "light" or "dark"
 		scheme.base.normal = inputJson.colors.foreground; // base colour for text
 		scheme.base.background = inputJson.colors["editor.background"]; // Background colour of the editor

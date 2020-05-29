@@ -7,15 +7,16 @@ const vscode = require("./vscode.js"); // Prompts module for user input
 run("udt.json", "vscode", "vim");
 
 async function run(input, from, to) {
-	console.log("Running Themeverter...");
+	console.info("Running Themeverter...");
 	try {
+    console.info("Reading scheme...")
     const scheme = await readScheme(input, from)
-    console.log("Scheme read.");
-    console.log("Formatting scheme...");
+    console.info("Scheme read.");
+    console.info("Formatting scheme...");
     const formattedScheme = formatScheme(scheme, to);
-    console.log("Scheme formatted.");
+    console.info("Scheme formatted.");
     generate(formattedScheme, to);
-    console.log("Scheme generated.");
+    console.info("Scheme generated.");
 	} catch (error) {
 		console.error(error);
 		return;
@@ -44,7 +45,9 @@ async function readScheme(file, from) {
 	};
 
   if (from === "vscode") {
-    return vscode.makeSchemeFromVSCode(file, schemeTemplate);
+    const scheme = await vscode.makeSchemeFromVSCode(file, schemeTemplate);
+    console.log("got to scheme, name is ", scheme.name)
+    return scheme
   }
 }
 
@@ -113,7 +116,7 @@ function generate(formattedScheme, to) {
 		fs.readFileSync("./templates/" + to + ".hbs", "utf8")
 	);
 	let rendered = template(formattedScheme);
-	fs.writeFile(scheme.name + ".vim", rendered, (err) => {
+	fs.writeFile(formattedScheme.name + ".vim", rendered, (err) => {
 		if (err) {
 			return console.error(err);
 		}
