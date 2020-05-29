@@ -41,6 +41,7 @@ module.exports = {
     if (inputJson.name) {
       scheme.name = inputJson.name
     } else {
+      // Do not try to access .name on the end of this await function, it doesn't work
       let userInput = await prompts({
         type: "text",
         name: "name",

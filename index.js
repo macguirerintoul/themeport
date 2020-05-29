@@ -1,7 +1,7 @@
 const fs = require("fs"); // Node.js File System module
 const handlebars = require("handlebars"); // Templating library for JavaScript
-const convert = require("color-convert"); // Convert colours between formats
-const vscode = require("./vscode.js"); // Prompts module for user input
+const vscode = require("./vscode.js"); // Utilities for VSCode
+const vim = require("./vim.js") // Utilities for Vim
 
 // Run the program
 run("udt.json", "vscode", "vim");
@@ -52,21 +52,6 @@ async function readScheme(file, from) {
 }
 
 /**
- * Generates an object with a property for each Vim highlight parameter. For each lexical item, Vim requires a foreground colour and a background colour. In addition, there should be a colour specified for GUI versions of Vim as well as terminal versions.
- *
- * @param {string} foreground - the colour of text (to be used in *fg)
- * @param {string} background - the colour of the background (to be used in *bg)
- * @return {object} Object with properties for each Vim higlight parameter
- */
-function generateVimColorSet(foreground, background) {
-	return {
-		guifg: foreground,
-		guibg: background,
-		ctermfg: convert.hex.ansi256(foreground),
-		ctermbg: convert.hex.ansi256(background),
-	};
-}
-/**
  * Formats the scheme argument to be suitable for the 'to' application.
  * @param {object} scheme - the Themeverter scheme object to be formatted
  * @param {string} to - the application to format for
@@ -78,27 +63,27 @@ function formatScheme(scheme, to) {
 		colors: {},
 	};
 	if (to === "vim") {
-		formattedScheme.colors.Normal = generateVimColorSet(
+		formattedScheme.colors.Normal = vim.generateVimColorSet(
 			scheme.base.normal,
 			scheme.base.background
 		);
-		formattedScheme.colors.Comment = generateVimColorSet(
+		formattedScheme.colors.Comment = vim.generateVimColorSet(
 			scheme.base.comment,
 			scheme.base.background
 		);
-		formattedScheme.colors.Boolean = generateVimColorSet(
+		formattedScheme.colors.Boolean = vim.generateVimColorSet(
 			scheme.base.boolean,
 			scheme.base.background
 		);
-		formattedScheme.colors.LineNr = generateVimColorSet(
+		formattedScheme.colors.LineNr = vim.generateVimColorSet(
 			scheme.base.lineNumber,
 			scheme.base.background
 		);
-		formattedScheme.colors.Cursor = generateVimColorSet(
+		formattedScheme.colors.Cursor = vim.generateVimColorSet(
 			scheme.base.cursor,
 			scheme.base.cursorText
 		);
-		formattedScheme.colors.CursorLine = generateVimColorSet(
+		formattedScheme.colors.CursorLine = vim.generateVimColorSet(
 			null,
 			scheme.base.cursorLine
 		);
