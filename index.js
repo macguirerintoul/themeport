@@ -1,7 +1,7 @@
 const fs = require("fs"); // Node.js File System module
 const handlebars = require("handlebars"); // Templating library for JavaScript
 const vscode = require("./vscode.js"); // Utilities for VSCode
-const vim = require("./vim.js") // Utilities for Vim
+const vim = require("./vim.js"); // Utilities for Vim
 
 // Run the program
 run("udt.json", "vscode", "vim");
@@ -9,19 +9,18 @@ run("udt.json", "vscode", "vim");
 async function run(input, from, to) {
 	console.info("Running Themeverter...");
 	try {
-    console.info("Reading scheme...")
-    const scheme = await readScheme(input, from)
-    console.info("Scheme read.");
-    console.info("Formatting scheme...");
-    const formattedScheme = formatScheme(scheme, to);
-    console.info("Scheme formatted.");
-    generate(formattedScheme, to);
-    console.info("Scheme generated.");
+		console.info("Reading scheme...");
+		const scheme = await readScheme(input, from);
+		console.info("Scheme read.");
+		console.info("Formatting scheme...");
+		const formattedScheme = formatScheme(scheme, to);
+		console.info("Scheme formatted.");
+		generate(formattedScheme, to);
+		console.info("Scheme generated.");
 	} catch (error) {
 		console.error(error);
 		return;
 	}
-
 }
 
 /**
@@ -44,11 +43,11 @@ async function readScheme(file, from) {
 		},
 	};
 
-  if (from === "vscode") {
-    const scheme = await vscode.makeSchemeFromVSCode(file, schemeTemplate);
-    console.log("got to scheme, name is ", scheme.name)
-    return scheme
-  }
+	if (from === "vscode") {
+		const scheme = await vscode.makeSchemeFromVSCode(file, schemeTemplate);
+		console.log("got to scheme, name is ", scheme.name);
+		return scheme;
+	}
 }
 
 /**
@@ -97,14 +96,37 @@ function formatScheme(scheme, to) {
  * @param {string} to - the application to port the colour scheme to
  */
 function generate(formattedScheme, to) {
+	// Read the corresponding template for the 'to' application
 	const template = handlebars.compile(
 		fs.readFileSync("./templates/" + to + ".hbs", "utf8")
 	);
+	// Render the template using Handlebars
 	let rendered = template(formattedScheme);
-	fs.writeFile(formattedScheme.name + ".vim", rendered, (err) => {
-		if (err) {
-			return console.error(err);
+  // Check if the 'schemes' directory exists and create it
+  let outputDirectory = './schemes'
+  if (!fs.existsSync(outputDirectory)) {
+    fs.mkdirSync(outputDirectory);
+  }
+  const fullFileName = formattedScheme.name + getFileExtension(to)
+	fs.writeFile(outputDirectory + "/" + fullFileName, rendered, (error) => {
+		if (error) {
+			return console.error(error);
 		}
-		console.log("The file was saved.");
+		console.log(fullFileName + " was saved to the schemes directory.");
 	});
+}
+
+/**
+ * Return the file extension that the 'to' application uses for colour schemes.
+ *
+ * @param {string} to - the application the scheme is being ported to
+ * @return the proper file extension
+ */
+function getFileExtension(to) {
+	switch (to) {
+		case "vim":
+			return ".vim";
+		case "vscode":
+			return ".json";
+	}
 }
