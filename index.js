@@ -2,9 +2,10 @@ const fs = require("fs"); // Node.js File System module
 const handlebars = require("handlebars"); // Templating library for JavaScript
 const vscode = require("./vscode.js"); // Utilities for VSCode
 const vim = require("./vim.js"); // Utilities for Vim
+const alacritty = require("./alacritty.js"); // Utilities for Alacritty
 
 // Run the program
-run("udt.json", "vscode", "vim");
+run("udt.json", "vscode", "alacritty");
 
 async function run(input, from, to) {
 	console.info("Running Themeverter...");
@@ -24,7 +25,8 @@ async function run(input, from, to) {
 }
 
 /**
- * Reads a colour scheme from a file.
+ * Reads a colour scheme from a file and normalizes it.
+ * 
  * @param {string} file - path to the scheme file to read
  * @param {string} from - the application the scheme comes from
  */
@@ -36,7 +38,10 @@ async function readScheme(file, from) {
 			background: null, // The prevalent background colour in the application
 			normal: null, // The colour of text that does not match another lexical item (i.e. Comment, String)
 			comment: null, // The colour of comments in code
-			string: null, // The colour of strings in code
+      string: null, // The colour of strings in code,
+      cursor: null, // Colour of the cursor line or block
+      cursorText: null, // Colour of the text inside the cursor
+      selectionBackground: null, // Background colour of selected text
 		},
 		vim: {
 			background: null, // vim 'set background=' (either light or dark)
@@ -57,37 +62,12 @@ async function readScheme(file, from) {
  * @return {object} the formatted colour scheme to be used in the {@link generate} function
  */
 function formatScheme(scheme, to) {
-	let formattedScheme = {
-		name: scheme.name,
-		colors: {},
-	};
-	if (to === "vim") {
-		formattedScheme.colors.Normal = vim.generateVimColorSet(
-			scheme.base.normal,
-			scheme.base.background
-		);
-		formattedScheme.colors.Comment = vim.generateVimColorSet(
-			scheme.base.comment,
-			scheme.base.background
-		);
-		formattedScheme.colors.Boolean = vim.generateVimColorSet(
-			scheme.base.boolean,
-			scheme.base.background
-		);
-		formattedScheme.colors.LineNr = vim.generateVimColorSet(
-			scheme.base.lineNumber,
-			scheme.base.background
-		);
-		formattedScheme.colors.Cursor = vim.generateVimColorSet(
-			scheme.base.cursor,
-			scheme.base.cursorText
-		);
-		formattedScheme.colors.CursorLine = vim.generateVimColorSet(
-			null,
-			scheme.base.cursorLine
-		);
-	}
-	return formattedScheme;
+	switch (to) {
+    case "vim":
+      return vim.formatForVim(scheme);
+    case "alacritty":
+      return alacritty.formatForAlacritty(scheme)
+  }
 }
 
 /**
@@ -127,6 +107,8 @@ function getFileExtension(to) {
 		case "vim":
 			return ".vim";
 		case "vscode":
-			return ".json";
+      return ".json";
+    case "alacritty":
+      return ".yml"
 	}
 }

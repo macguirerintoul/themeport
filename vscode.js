@@ -48,9 +48,9 @@ module.exports = {
 				message: "Couldn't find scheme name. Please enter one:",
 			});
 			scheme.name = userInput.name;
-			console.log("end of else, ", scheme.name);
 		}
-		console.log("first line after else");
+
+    // Populate the scheme template. See index.js for a description of each of these.
 		scheme.vim.background = inputJson.type; // type in VSCode themes is either "light" or "dark"
 		scheme.base.normal = inputJson.colors.foreground; // base colour for text
 		scheme.base.background = inputJson.colors["editor.background"]; // Background colour of the editor
@@ -59,10 +59,12 @@ module.exports = {
 		scheme.base.string = tokenColors.string.settings.foreground; // Colour of string
 		scheme.base.number = tokenColors["constant.numeric"].settings.foreground; // Colour of numbers
 		scheme.base.boolean =
-			tokenColors["constant.language.boolean"].settings.foreground; // Colour of true/false
-		scheme.base.cursor = inputJson.colors["editorCursor.foreground"]; // Colour of the cursor line or block
-		scheme.base.cursorLine = inputJson.colors["editor.lineHighlightBackground"]; // Background colour of the line on which the cursor is in the editor
-
+			tokenColors["constant.language.boolean"].settings.foreground;
+		scheme.base.cursor = inputJson.colors["editorCursor.foreground"];
+		scheme.base.cursorLine = inputJson.colors["editor.lineHighlightBackground"];
+    scheme.base.selectionBackground = inputJson.colors["editor.selectionBackground"];
+    scheme.base.selectionForeground = inputJson.colors["editor.selectionForeground"];
+  
 		/* 
       VSCode optionally allows an "editorCursor.background" colour, which sets the colour of text inside a block cursor. If that property is set, use it here - otherwise, fall back to the editor background colour.
     */
