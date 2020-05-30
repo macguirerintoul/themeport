@@ -41,7 +41,8 @@ async function readScheme(file, from) {
       string: null, // The colour of strings in code,
       cursor: null, // Colour of the cursor line or block
       cursorText: null, // Colour of the text inside the cursor
-      selectionBackground: null, // Background colour of selected text
+      selectionBackground: null, // Background colour of selected text.
+      selectionForeground: null, // Colour of selected text. Note about Alacritty: if a background is specified without a foreground, the colour of the text will not change which could cause readability issues.
 		},
 		vim: {
 			background: null, // vim 'set background=' (either light or dark)

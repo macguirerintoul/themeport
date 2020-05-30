@@ -31,6 +31,8 @@ module.exports = {
     formattedScheme.colors.selection.text = scheme.base.selectionForeground
 
     // TODO does alacritty support hex with alpha? if not, make sure to format colors as 6-character hex codes
+    // according to wiki, it does not but maybe test it out
+    // https://github.com/alacritty/alacritty/wiki/Color-schemes#color-schemes
     return formattedScheme
   }
 }
