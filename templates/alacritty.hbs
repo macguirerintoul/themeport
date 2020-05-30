@@ -2,8 +2,8 @@
 colors:
   # Default colors
   primary:
-    background: {{ colors.primary.background }}
-    foreground: {{ colors.primary.foreground }}
+    background: "{{ colors.primary.background }}"
+    foreground: "{{ colors.primary.foreground }}"
 
     # Bright and dim foreground colors
     #
@@ -18,8 +18,8 @@ colors:
   # Colors which should be used to draw the terminal cursor. If these are
   # unset, the cursor color will be the inverse of the cell color.
   cursor:
-    text: {{ colors.cursor.text }}
-    cursor: {{ colors.cursor.cursor}}
+    text: "{{ colors.cursor.text }}"
+    cursor: "{{ colors.cursor.cursor}}"
 
   # Vi mode cursor colors
   #
@@ -35,30 +35,30 @@ colors:
   # background is unset, selection color will be the inverse of the cell colors.
   # If only text is unset the cell text color will remain the same.
   selection:
-    text: {{ colors.selection.text }}
-    background: {{ colors.selection.background }}
+    text: "{{ colors.selection.text }}"
+    background: "{{ colors.selection.background }}"
 
   # Normal colors
-  #normal:
-  #  black:   '#1d1f21'
-  #  red:     '#cc6666'
-  #  green:   '#b5bd68'
-  #  yellow:  '#f0c674'
-  #  blue:    '#81a2be'
-  #  magenta: '#b294bb'
-  #  cyan:    '#8abeb7'
-  #  white:   '#c5c8c6'
+  normal:
+    black: "{{ colors.normal.black }}"
+    red: "{{ colors.normal.red }}"
+    green: "{{ colors.normal.green }}"
+    yellow: "{{ colors.normal.yellow }}"
+    blue: "{{ colors.normal.blue }}"
+    magenta: "{{ colors.normal.magenta }}"
+    cyan: "{{ colors.normal.cyan }}"
+    white: "{{ colors.normal.white }}"
 
   # Bright colors
-  #bright:
-  #  black:   '#666666'
-  #  red:     '#d54e53'
-  #  green:   '#b9ca4a'
-  #  yellow:  '#e7c547'
-  #  blue:    '#7aa6da'
-  #  magenta: '#c397d8'
-  #  cyan:    '#70c0b1'
-  #  white:   '#eaeaea'
+  bright:
+    black: "{{ colors.bright.black }}"
+    red: "{{ colors.bright.red }}"
+    green: "{{ colors.bright.green }}"
+    yellow: "{{ colors.bright.yellow }}"
+    blue: "{{ colors.bright.blue }}"
+    magenta: "{{ colors.bright.magenta }}"
+    cyan: "{{ colors.bright.cyan }}"
+    white: "{{ colors.bright.white }}"
 
   # Dim colors
   #

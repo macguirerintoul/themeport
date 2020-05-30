@@ -26,7 +26,7 @@ async function run(input, from, to) {
 
 /**
  * Reads a colour scheme from a file and normalizes it.
- * 
+ *
  * @param {string} file - path to the scheme file to read
  * @param {string} from - the application the scheme comes from
  */
@@ -38,11 +38,29 @@ async function readScheme(file, from) {
 			background: null, // The prevalent background colour in the application
 			normal: null, // The colour of text that does not match another lexical item (i.e. Comment, String)
 			comment: null, // The colour of comments in code
-      string: null, // The colour of strings in code,
-      cursor: null, // Colour of the cursor line or block
-      cursorText: null, // Colour of the text inside the cursor
-      selectionBackground: null, // Background colour of selected text.
-      selectionForeground: null, // Colour of selected text. Note about Alacritty: if a background is specified without a foreground, the colour of the text will not change which could cause readability issues.
+			string: null, // The colour of strings in code,
+			cursor: null, // Colour of the cursor line or block
+			cursorText: null, // Colour of the text inside the cursor
+			selectionBackground: null, // Background colour of selected text.
+			selectionForeground: null, // Colour of selected text. Note about Alacritty: if a background is specified without a foreground, the colour of the text will not change which could cause readability issues.
+		},
+		ansi: {
+			black: null,
+			red: null,
+			green: null,
+			yellow: null,
+			blue: null,
+			magenta: null,
+			cyan: null,
+			white: null,
+			brightBlack: null,
+			brightRed: null,
+			brightGreen: null,
+			brightYellow: null,
+			brightBlue: null,
+			brightMagenta: null,
+			brightCyan: null,
+			brightWhite: null,
 		},
 		vim: {
 			background: null, // vim 'set background=' (either light or dark)
@@ -51,7 +69,6 @@ async function readScheme(file, from) {
 
 	if (from === "vscode") {
 		const scheme = await vscode.makeSchemeFromVSCode(file, schemeTemplate);
-		console.log("got to scheme, name is ", scheme.name);
 		return scheme;
 	}
 }
@@ -64,11 +81,11 @@ async function readScheme(file, from) {
  */
 function formatScheme(scheme, to) {
 	switch (to) {
-    case "vim":
-      return vim.formatForVim(scheme);
-    case "alacritty":
-      return alacritty.formatForAlacritty(scheme)
-  }
+		case "vim":
+			return vim.formatForVim(scheme);
+		case "alacritty":
+			return alacritty.formatForAlacritty(scheme);
+	}
 }
 
 /**
@@ -83,12 +100,12 @@ function generate(formattedScheme, to) {
 	);
 	// Render the template using Handlebars
 	let rendered = template(formattedScheme);
-  // Check if the 'schemes' directory exists and create it
-  let outputDirectory = './schemes'
-  if (!fs.existsSync(outputDirectory)) {
-    fs.mkdirSync(outputDirectory);
-  }
-  const fullFileName = formattedScheme.name + getFileExtension(to)
+	// Check if the 'schemes' directory exists and create it
+	let outputDirectory = "./schemes";
+	if (!fs.existsSync(outputDirectory)) {
+		fs.mkdirSync(outputDirectory);
+	}
+	const fullFileName = formattedScheme.name + getFileExtension(to);
 	fs.writeFile(outputDirectory + "/" + fullFileName, rendered, (error) => {
 		if (error) {
 			return console.error(error);
@@ -108,8 +125,8 @@ function getFileExtension(to) {
 		case "vim":
 			return ".vim";
 		case "vscode":
-      return ".json";
-    case "alacritty":
-      return ".yml"
+			return ".json";
+		case "alacritty":
+			return ".yml";
 	}
 }

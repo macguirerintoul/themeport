@@ -50,7 +50,7 @@ module.exports = {
 			scheme.name = userInput.name;
 		}
 
-    // Populate the scheme template. See index.js for a description of each of these.
+		// Populate the scheme template. See index.js for a description of each of these.
 		scheme.vim.background = inputJson.type; // type in VSCode themes is either "light" or "dark"
 		scheme.base.normal = inputJson.colors.foreground; // base colour for text
 		scheme.base.background = inputJson.colors["editor.background"]; // Background colour of the editor
@@ -62,9 +62,11 @@ module.exports = {
 			tokenColors["constant.language.boolean"].settings.foreground;
 		scheme.base.cursor = inputJson.colors["editorCursor.foreground"];
 		scheme.base.cursorLine = inputJson.colors["editor.lineHighlightBackground"];
-    scheme.base.selectionBackground = inputJson.colors["editor.selectionBackground"];
-    scheme.base.selectionForeground = inputJson.colors["editor.selectionForeground"];
-  
+		scheme.base.selectionBackground =
+			inputJson.colors["editor.selectionBackground"];
+		scheme.base.selectionForeground =
+			inputJson.colors["editor.selectionForeground"];
+
 		/* 
       VSCode optionally allows an "editorCursor.background" colour, which sets the colour of text inside a block cursor. If that property is set, use it here - otherwise, fall back to the editor background colour.
     */
@@ -73,6 +75,23 @@ module.exports = {
 		} else {
 			scheme.base.cursorText = inputJson.colors["editor.background"];
 		}
+
+		scheme.ansi.black = inputJson.colors["terminal.ansiBlack"];
+		scheme.ansi.red = inputJson.colors["terminal.ansiRed"];
+		scheme.ansi.green = inputJson.colors["terminal.ansiGreen"];
+		scheme.ansi.yellow = inputJson.colors["terminal.ansiYellow"];
+		scheme.ansi.blue = inputJson.colors["terminal.ansiBlue"];
+		scheme.ansi.magenta = inputJson.colors["terminal.ansiMagenta"];
+		scheme.ansi.cyan = inputJson.colors["terminal.ansiCyan"];
+		scheme.ansi.white = inputJson.colors["terminal.ansiWhite"];
+		scheme.ansi.brightBlack = inputJson.colors["terminal.ansiBrightBlack"];
+		scheme.ansi.brightRed = inputJson.colors["terminal.ansiBrightRed"];
+		scheme.ansi.brightGreen = inputJson.colors["terminal.ansiBrightGreen"];
+		scheme.ansi.brightYellow = inputJson.colors["terminal.ansiBrightYellow"];
+		scheme.ansi.brightBlue = inputJson.colors["terminal.ansiBrightBlue"];
+		scheme.ansi.brightMagenta = inputJson.colors["terminal.ansiBrightMagenta"];
+		scheme.ansi.brightCyan = inputJson.colors["terminal.ansiBrightCyan"];
+		scheme.ansi.brightWhite = inputJson.colors["terminal.ansiBrightWhite"];
 
 		return scheme;
 	},

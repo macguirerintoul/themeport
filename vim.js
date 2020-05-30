@@ -15,19 +15,19 @@ module.exports = {
 			ctermfg: convert.hex.ansi256(foreground),
 			ctermbg: convert.hex.ansi256(background),
 		};
-  },
-  /**
-   * Format a scheme for use with the Vim template.
-   * 
-   * @param {object} scheme - the scheme in normalized format
-   * @return {object} - the formatted scheme
-   */
-  formatForVim: function(scheme) {
-    let formattedScheme = {
-      name: scheme.name,
-      colors: {},
-    };
-    formattedScheme.colors.Normal = generateVimColorSet(
+	},
+	/**
+	 * Format a scheme for use with the Vim template.
+	 *
+	 * @param {object} scheme - the scheme in normalized format
+	 * @return {object} - the formatted scheme
+	 */
+	formatForVim: function (scheme) {
+		let formattedScheme = {
+			name: scheme.name,
+			colors: {},
+		};
+		formattedScheme.colors.Normal = generateVimColorSet(
 			scheme.base.normal,
 			scheme.base.background
 		);
@@ -50,7 +50,7 @@ module.exports = {
 		formattedScheme.colors.CursorLine = generateVimColorSet(
 			null,
 			scheme.base.cursorLine
-    );
-    return formattedScheme
-  }
+		);
+		return formattedScheme;
+	},
 };
