@@ -5,7 +5,7 @@ const vim = require("./vim.js"); // Utilities for Vim
 const alacritty = require("./alacritty.js"); // Utilities for Alacritty
 
 // Run the program
-run("udt.json", "vscode", "alacritty");
+run("nol.json", "vscode", "alacritty");
 
 async function run(input, from, to) {
 	console.info("Running Themeverter...");
