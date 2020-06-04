@@ -1,4 +1,5 @@
 const convert = require("color-convert"); // Convert colours between formats
+const vimParser = require("./vimParser.js")
 
 module.exports = {
   makeSchemeFromVim: function(file, schemeTemplate) {
