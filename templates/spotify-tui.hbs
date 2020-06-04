@@ -1,19 +1,19 @@
 theme:
-  active: "{{ theme.green }}" # colour of current playing song in list & active pane
-  banner: "{{ theme.red }}"
-  error_border: "{{ theme.red }}"
-  error_text: "{{ theme.brightRed }}"
-  hint: "{{ theme.yellow }}"
-  hovered: "{{ theme.magenta }}" # border colour of hovered pane
-  playbar_text: "{{ theme.black }}" 
-  selected: "{{ theme.green }}"
-  playbar_progress: "{{ theme.brightGreen }}"
+  active: "{{ theme.green }}" # current playing song in list
+  banner: "{{ theme.green }}" # the "spotify-tui" banner on launch
+  error_border: "{{ theme.red }}" # error dialog border
+  error_text: "{{ theme.red }}" # error message text (e.g. "Spotify API reported error 404")
+  hint: "{{ theme.yellow }}" # hint text in errors
+  hovered: "{{ theme.blue }}" # hovered pane border
+  playbar_text: "{{ theme.yellow }}" 
+  selected: "{{ theme.yellow }}" # a) selected pane border, b) hovered item in list, & c) track title in player
+  playbar_progress: "{{ theme.green }}" # filled-in part of the progress bar
   {{#if isDark}}
-  playbar_background: "{{ theme.white }}" # background colour of progress bar
-  inactive: "{{ theme.brightBlack }}" # colour of borders of non-selected panes
-  text: "{{ theme.white }}" # colour of text in panes
+  playbar_background: "{{ theme.white }}" # background of progress bar
+  inactive: "{{ theme.brightBlack }}" # borders of inactive panes
+  text: "{{ theme.white }}" # text in panes
   {{else}}
-  playbar_background: "{{ theme.white }}" # background colour of progress bar
-  inactive: "{{ theme.white }}" # colour of borders of non-selected panes
-  text: "{{ theme.brightBlack }}" # colour of text in panes
+  playbar_background: "{{ theme.white }}" # background of progress bar
+  inactive: "{{ theme.brightBlack}}" # borders of inactive panes
+  text: "{{ theme.brightBlack }}" # text in panes
   {{/if}}
