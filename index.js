@@ -3,9 +3,10 @@ const handlebars = require("handlebars"); // Templating library for JavaScript
 const vscode = require("./vscode.js"); // Utilities for VSCode
 const vim = require("./vim.js"); // Utilities for Vim
 const alacritty = require("./alacritty.js"); // Utilities for Alacritty
+const spotifyTui = require("./spotifyTui.js"); // Utilities for spotify-tui
 
 // Run the program
-run("nol.json", "vscode", "alacritty");
+run("nol.json", "vscode", "spotify-tui");
 
 async function run(input, from, to) {
 	console.info("Running Themeverter...");
@@ -33,6 +34,7 @@ async function run(input, from, to) {
 async function readScheme(file, from) {
 	// The data to be used in the Handlebars templates.
 	const schemeTemplate = {
+    isDark: null, // boolean - whether the theme is considered a "dark" theme
 		base: {
 			// Colours that are generally used across several applications
 			background: null, // The prevalent background colour in the application
@@ -84,7 +86,9 @@ function formatScheme(scheme, to) {
 		case "vim":
 			return vim.formatForVim(scheme);
 		case "alacritty":
-			return alacritty.formatForAlacritty(scheme);
+      return alacritty.formatForAlacritty(scheme);
+    case "spotify-tui":
+      return spotifyTui.formatForSpotifyTui(scheme);
 	}
 }
 
@@ -125,8 +129,10 @@ function getFileExtension(to) {
 		case "vim":
 			return ".vim";
 		case "vscode":
-			return ".json";
+			return ".vscode.json";
 		case "alacritty":
-			return ".yml";
+      return ".alacritty.yml";
+    case "spotify-tui":
+      return ".spotify-tui.yml";
 	}
 }

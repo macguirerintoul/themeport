@@ -48,7 +48,8 @@ module.exports = {
 				message: "Couldn't find scheme name. Please enter one:",
 			});
 			scheme.name = userInput.name;
-		}
+    }
+    scheme.isDark = inputJson.type === "dark" ? true : false;
 
 		// Populate the scheme template. See index.js for a description of each of these.
 		scheme.vim.background = inputJson.type; // type in VSCode themes is either "light" or "dark"

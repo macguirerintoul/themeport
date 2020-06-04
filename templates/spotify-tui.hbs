@@ -1,0 +1,19 @@
+theme:
+  active: "{{ theme.green }}" # colour of current playing song in list & active pane
+  banner: "{{ theme.red }}"
+  error_border: "{{ theme.red }}"
+  error_text: "{{ theme.brightRed }}"
+  hint: "{{ theme.yellow }}"
+  hovered: "{{ theme.magenta }}" # border colour of hovered pane
+  playbar_text: "{{ theme.black }}" 
+  selected: "{{ theme.green }}"
+  playbar_progress: "{{ theme.brightGreen }}"
+  {{#if isDark}}
+  playbar_background: "{{ theme.white }}" # background colour of progress bar
+  inactive: "{{ theme.brightBlack }}" # colour of borders of non-selected panes
+  text: "{{ theme.white }}" # colour of text in panes
+  {{else}}
+  playbar_background: "{{ theme.white }}" # background colour of progress bar
+  inactive: "{{ theme.white }}" # colour of borders of non-selected panes
+  text: "{{ theme.brightBlack }}" # colour of text in panes
+  {{/if}}
