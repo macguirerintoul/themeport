@@ -7,9 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --ext .js,.hbs ."
   },
-	"bin": {
-		"themeverter": "./index.js"
-	},
+  "bin": {
+    "themeverter": "./index.js"
+  },
   "author": "Macguire Rintoul (https://macguire.me)",
   "license": "MIT",
   "dependencies": {
