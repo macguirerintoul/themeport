@@ -40,7 +40,8 @@ async function run(inputArg, fromArg, toArg) {
 			message: 'Which app would you like to convert to?',
 			choices: [
 				{ title: 'Vim', value: 'vim' },
-				{ title: 'Alacritty', value: 'alacritty' }
+				{ title: 'Alacritty', value: 'alacritty' },
+				{ title: 'iTerm2', value: 'iterm2' }
 			]
 		});
 		to = userTo.to;
@@ -135,6 +136,8 @@ function formatScheme(scheme, to) {
 			return vim.formatForVim(scheme);
 		case "alacritty":
       return alacritty.formatForAlacritty(scheme);
+		case "iterm2":
+			return iterm2.formatForiTerm2(scheme);
     case "spotify-tui":
       return spotifyTui.formatForSpotifyTui(scheme);
 	}
@@ -180,6 +183,8 @@ function getFileExtension(to) {
 			return ".vscode.json";
 		case "alacritty":
       return ".alacritty.yml";
+		case "iterm2":
+			return ".itermcolors";
     case "spotify-tui":
       return ".spotify-tui.yml";
 	}
