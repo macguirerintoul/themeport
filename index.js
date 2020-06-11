@@ -1,17 +1,50 @@
 const fs = require("fs"); // Node.js File System module
 const handlebars = require("handlebars"); // Templating library for JavaScript
+const prompts = require("prompts"); // CLI input library
+
 const vscode = require("./vscode.js"); // Utilities for VSCode
 const vim = require("./vim.js"); // Utilities for Vim
 const alacritty = require("./alacritty.js"); // Utilities for Alacritty
 const spotifyTui = require("./spotifyTui.js"); // Utilities for spotify-tui
 
 // Run the program
-run("nol.json", "vscode", "spotify-tui");
+run('./udt.json', null, 'vim');
 
-async function run(input, from, to) {
+async function run(inputArg, fromArg, toArg) {
 	console.info("Running Themeverter...");
+	let input, from, to;
+
+	if (!inputArg) {
+
+	} else {
+		input = inputArg;
+	}
+
+	if (!fromArg) {
+		// If no "from" argument is given...
+		console.info("No from specified")
+		const userFrom = await prompts({
+			type: 'select',
+			name: 'from',
+			message: 'Which app is the scheme from?',
+			choices: [
+				{ title: 'VSCode', value: 'vscode' },
+				{ title: 'test', value: 'test' }
+			],
+			initial: 0
+		})
+		from = userFrom.from
+	} else {
+		from = fromArg;
+	}
+
+	if (!toArg) {
+
+	} else {
+		to = toArg;
+	}
+
 	try {
-		console.info("Reading scheme...");
 		const scheme = await readScheme(input, from);
 		console.info("Scheme read.");
 		console.info("Formatting scheme...");
