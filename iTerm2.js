@@ -6,20 +6,35 @@ module.exports = {
 			name: scheme.name
 		}
 
-		formattedScheme.background = scheme.base.background;
-		formattedScheme.foreground = scheme.base.normal;
-		formattedScheme.cursor = scheme.base.cursor;
-		formattedScheme.cursorText = scheme.base.cursorText;
-		formattedScheme.selection = scheme.base.selectionBackground;
-		formattedScheme.selectionText = scheme.base.selectionForeground;
+		const miscColours = {
+			"background": scheme.base.background,
+			"foreground": scheme.base.normal,
+			"cursor": scheme.base.cursor,
+			"cursorText": scheme.base.cursorText,
+			"selection": scheme.base.selectionBackground,
+			"selectionText": scheme.base.selectionForeground
+		}
+
+		// For every colour in miscColours...
+		Object.entries(miscColours).forEach((key, value) => {
+			console.log(key, value);
+			formattedScheme[key] = {}; // Create the property so we can add sub-properties
+
+			formattedScheme[key].red = convert.hex.rgb(value)[0];
+			formattedScheme[key].green = convert.hex.rgb(value)[1];
+			formattedScheme[key].blue = convert.hex.rgb(value)[2];
+		})
 
 		// For every color in scheme.ansi...
-		Object.entries(formattedScheme.ansi).forEach((key, value) => {
+		Object.entries(scheme.ansi).forEach((key, value) => {
+			formattedScheme[key] = {}; // Create the property so we can add sub-properties
+
 			// Generate and add the R, G, and B channels to formattedScheme
 			formattedScheme[key].red = convert.hex.rgb(value)[0]
 			formattedScheme[key].green = convert.hex.rgb(value)[1]
 			formattedScheme[key].blue = convert.hex.rgb(value)[2]
 		});
+		console.log(formattedScheme);
 
 		return formattedScheme;
 	}

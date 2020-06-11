@@ -7,6 +7,7 @@ const prompts = require("prompts"); // CLI input library
 const vscode = require("./vscode.js"); // Utilities for VSCode
 const vim = require("./vim.js"); // Utilities for Vim
 const alacritty = require("./alacritty.js"); // Utilities for Alacritty
+const iTerm2 = require("./iTerm2.js"); // Utilities for iTerm2
 const spotifyTui = require("./spotifyTui.js"); // Utilities for spotify-tui
 
 // Run the program
@@ -137,7 +138,7 @@ function formatScheme(scheme, to) {
 		case "alacritty":
       return alacritty.formatForAlacritty(scheme);
 		case "iterm2":
-			return iterm2.formatForiTerm2(scheme);
+			return iTerm2.formatForiTerm2(scheme);
     case "spotify-tui":
       return spotifyTui.formatForSpotifyTui(scheme);
 	}
