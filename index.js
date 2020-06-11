@@ -8,21 +8,14 @@ const alacritty = require("./alacritty.js"); // Utilities for Alacritty
 const spotifyTui = require("./spotifyTui.js"); // Utilities for spotify-tui
 
 // Run the program
-run('./udt.json', null, 'vim');
+run();
 
 async function run(inputArg, fromArg, toArg) {
 	console.info("Running Themeverter...");
 	let input, from, to;
 
-	if (!inputArg) {
-
-	} else {
-		input = inputArg;
-	}
-
 	if (!fromArg) {
 		// If no "from" argument is given...
-		console.info("No from specified")
 		const userFrom = await prompts({
 			type: 'select',
 			name: 'from',
@@ -39,9 +32,29 @@ async function run(inputArg, fromArg, toArg) {
 	}
 
 	if (!toArg) {
-
+		const userTo = await prompts({
+			type: 'select',
+			name: 'to',
+			message: 'Which app would you like to convert to?',
+			choices: [
+				{ title: 'Vim', value: 'vim' },
+				{ title: 'Alacritty', value: 'alacritty' }
+			]
+		});
+		to = userTo.to;
 	} else {
 		to = toArg;
+	}
+
+	if (!inputArg) {
+		const userInput = await prompts({
+			type: "text",
+			name: "input",
+			message: "Enter the path to the theme file:"
+		});
+		input = userInput.input;
+	} else {
+		input = inputArg;
 	}
 
 	try {
