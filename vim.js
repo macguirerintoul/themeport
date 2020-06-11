@@ -32,27 +32,27 @@ module.exports = {
 			name: scheme.name,
 			colors: {},
 		};
-		formattedScheme.colors.Normal = generateVimColorSet(
+	formattedScheme.colors.Normal = this.generateVimColorSet(
 			scheme.base.normal,
 			scheme.base.background
 		);
-		formattedScheme.colors.Comment = generateVimColorSet(
+		formattedScheme.colors.Comment = this.generateVimColorSet(
 			scheme.base.comment,
 			scheme.base.background
 		);
-		formattedScheme.colors.Boolean = generateVimColorSet(
+		formattedScheme.colors.Boolean = this.generateVimColorSet(
 			scheme.base.boolean,
 			scheme.base.background
 		);
-		formattedScheme.colors.LineNr = generateVimColorSet(
+		formattedScheme.colors.LineNr = this.generateVimColorSet(
 			scheme.base.lineNumber,
 			scheme.base.background
 		);
-		formattedScheme.colors.Cursor = generateVimColorSet(
+		formattedScheme.colors.Cursor = this.generateVimColorSet(
 			scheme.base.cursor,
 			scheme.base.cursorText
 		);
-		formattedScheme.colors.CursorLine = generateVimColorSet(
+		formattedScheme.colors.CursorLine = this.generateVimColorSet(
 			null,
 			scheme.base.cursorLine
 		);
