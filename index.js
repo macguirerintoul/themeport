@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const fs = require("fs"); // Node.js File System module
 const handlebars = require("handlebars"); // Templating library for JavaScript
 const prompts = require("prompts"); // CLI input library
