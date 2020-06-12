@@ -1,29 +1,29 @@
 {
-  "name": "themeverter",
-  "version": "0.1.0",
-  "description": "Easily port color schemes to & from various applications.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --ext .js .",
-		"fix": "eslint --ext .js . --fix & prettier --write"
-  },
-  "bin": {
-    "themeverter": "./index.js"
-  },
-  "author": "Macguire Rintoul (https://macguire.me)",
-  "license": "MIT",
-  "dependencies": {
-    "color-convert": "2.0.1",
-    "handlebars": "4.7.6",
-    "jsonc-parser": "2.2.1",
-    "prompts": "2.3.2",
-    "update-notifier": "^4.1.0"
-  },
-  "devDependencies": {
-    "eslint": "7.1.0",
-    "eslint-config-prettier": "6.11.0",
-    "eslint-plugin-prettier": "3.1.3",
-    "prettier": "2.0.5"
-  }
+	"name": "themeverter",
+	"version": "0.1.0",
+	"description": "Easily port color schemes to & from various applications.",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"lint": "eslint --ext .js .",
+		"fix": "eslint --ext .js . --fix & prettier --write ."
+	},
+	"bin": {
+		"themeverter": "./index.js"
+	},
+	"author": "Macguire Rintoul (https://macguire.me)",
+	"license": "MIT",
+	"dependencies": {
+		"color-convert": "2.0.1",
+		"handlebars": "4.7.6",
+		"jsonc-parser": "2.2.1",
+		"prompts": "2.3.2",
+		"update-notifier": "^4.1.0"
+	},
+	"devDependencies": {
+		"eslint": "7.1.0",
+		"eslint-config-prettier": "6.11.0",
+		"eslint-plugin-prettier": "3.1.3",
+		"prettier": "2.0.5"
+	}
 }
