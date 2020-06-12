@@ -1,3 +1,3 @@
-const vimParser = require("./vimParser")
+const vimParser = require("./vimParser");
 
-vimParser.parse("night-owl.vim")
+vimParser.parse("night-owl.vim");

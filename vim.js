@@ -1,11 +1,11 @@
 const convert = require("color-convert"); // Convert colours between formats
-const vimParser = require("./vimParser.js")
+const vimParser = require("./vimParser.js");
 
 module.exports = {
-  makeSchemeFromVim: function(file, schemeTemplate) {
-    let scheme = schemeTemplate;
+	makeSchemeFromVim: function (file, schemeTemplate) {
+		let scheme = schemeTemplate;
 		let inputFile = fs.readFileSync(file, "utf8"); // Read the --input file
-  },
+	},
 	/**
 	 * Generates an object with a property for each Vim highlight parameter. For each lexical item, Vim requires a foreground colour and a background colour. In addition, there should be a colour specified for GUI versions of Vim as well as terminal versions.
 	 *
@@ -32,7 +32,7 @@ module.exports = {
 			name: scheme.name,
 			colors: {},
 		};
-	formattedScheme.colors.Normal = this.generateVimColorSet(
+		formattedScheme.colors.Normal = this.generateVimColorSet(
 			scheme.base.normal,
 			scheme.base.background
 		);

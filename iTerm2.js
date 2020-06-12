@@ -4,8 +4,8 @@ module.exports = {
 	formatForiTerm2(scheme) {
 		let formattedScheme = {
 			name: scheme.name,
-			colours: {}
-		}
+			colours: {},
+		};
 
 		const miscColours = {
 			background: scheme.base.background,
@@ -18,11 +18,12 @@ module.exports = {
 			selectionText: scheme.base.selectionForeground,
 			badge: scheme.ansi.red,
 			tab: scheme.base.background,
-			cursorGuide: scheme.ansi.brightWhite
-		}
+			cursorGuide: scheme.ansi.brightWhite,
+		};
 
 		// miscColours.selectionText may not be defined, because some themes don't specify one. However, iTerm2 requires it for a valid theme.
-		if (!miscColours.selectionText) miscColours.selectionText = miscColours.cursorText;
+		if (!miscColours.selectionText)
+			miscColours.selectionText = miscColours.cursorText;
 
 		// For every colour in miscColours...
 		for (let [key, value] of Object.entries(miscColours)) {
@@ -38,7 +39,7 @@ module.exports = {
 			formattedScheme.colours[key].red = convert.hex.rgb(value)[0] / 255;
 			formattedScheme.colours[key].green = convert.hex.rgb(value)[1] / 255;
 			formattedScheme.colours[key].blue = convert.hex.rgb(value)[2] / 255;
-		};
+		}
 
 		// Define titles to be used in iTerm2 template
 		formattedScheme.colours.background.title = "Background";
@@ -52,7 +53,7 @@ module.exports = {
 		formattedScheme.colours.badge.title = "Badge";
 		formattedScheme.colours.tab.title = "Tab";
 		formattedScheme.colours.cursorGuide.title = "Cursor Guide";
-		
+
 		// In theory, this could be done in the Object.entries loop above, however according to MDN, order is not guaranteed
 		formattedScheme.colours.black.title = "Ansi 0";
 		formattedScheme.colours.red.title = "Ansi 1";
@@ -72,5 +73,5 @@ module.exports = {
 		formattedScheme.colours.brightWhite.title = "Ansi 15";
 
 		return formattedScheme;
-	}
-}
+	},
+};

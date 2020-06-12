@@ -3,16 +3,16 @@
 const fs = require("fs"); // Node.js File System module
 const handlebars = require("handlebars"); // Templating library for JavaScript
 const prompts = require("prompts"); // CLI input library
-const updateNotifier = require('update-notifier'); // Notifies users of newer versions
+const updateNotifier = require("update-notifier"); // Notifies users of newer versions
 
-const pkg = require('./package.json');
+const pkg = require("./package.json");
 const vscode = require("./vscode.js"); // Utilities for VSCode
 const vim = require("./vim.js"); // Utilities for Vim
 const alacritty = require("./alacritty.js"); // Utilities for Alacritty
 const iTerm2 = require("./iTerm2.js"); // Utilities for iTerm2
 const spotifyTui = require("./spotifyTui.js"); // Utilities for spotify-tui
- 
-updateNotifier({pkg}).notify();
+
+updateNotifier({ pkg }).notify();
 
 // Run the program
 run();
@@ -24,30 +24,30 @@ async function run(inputArg, fromArg, toArg) {
 	if (!fromArg) {
 		// If no "from" argument is given...
 		const userFrom = await prompts({
-			type: 'select',
-			name: 'from',
-			message: 'Which app is the scheme from?',
+			type: "select",
+			name: "from",
+			message: "Which app is the scheme from?",
 			choices: [
-				{ title: 'VSCode', value: 'vscode' },
-				{ title: 'test', value: 'test' }
+				{ title: "VSCode", value: "vscode" },
+				{ title: "test", value: "test" },
 			],
-			initial: 0
-		})
-		from = userFrom.from
+			initial: 0,
+		});
+		from = userFrom.from;
 	} else {
 		from = fromArg;
 	}
 
 	if (!toArg) {
 		const userTo = await prompts({
-			type: 'select',
-			name: 'to',
-			message: 'Which app would you like to convert to?',
+			type: "select",
+			name: "to",
+			message: "Which app would you like to convert to?",
 			choices: [
-				{ title: 'Vim', value: 'vim' },
-				{ title: 'Alacritty', value: 'alacritty' },
-				{ title: 'iTerm2', value: 'iterm2' }
-			]
+				{ title: "Vim", value: "vim" },
+				{ title: "Alacritty", value: "alacritty" },
+				{ title: "iTerm2", value: "iterm2" },
+			],
 		});
 		to = userTo.to;
 	} else {
@@ -58,7 +58,7 @@ async function run(inputArg, fromArg, toArg) {
 		const userInput = await prompts({
 			type: "text",
 			name: "input",
-			message: "Enter the path to the theme file:"
+			message: "Enter the path to the theme file:",
 		});
 		input = userInput.input;
 	} else {
@@ -88,7 +88,7 @@ async function run(inputArg, fromArg, toArg) {
 async function readScheme(file, from) {
 	// The data to be used in the Handlebars templates.
 	const schemeTemplate = {
-    isDark: null, // boolean - whether the theme is considered a "dark" theme
+		isDark: null, // boolean - whether the theme is considered a "dark" theme
 		base: {
 			// Colours that are generally used across several applications
 			background: null, // The prevalent background colour in the application
@@ -140,11 +140,11 @@ function formatScheme(scheme, to) {
 		case "vim":
 			return vim.formatForVim(scheme);
 		case "alacritty":
-      return alacritty.formatForAlacritty(scheme);
+			return alacritty.formatForAlacritty(scheme);
 		case "iterm2":
 			return iTerm2.formatForiTerm2(scheme);
-    case "spotify-tui":
-      return spotifyTui.formatForSpotifyTui(scheme);
+		case "spotify-tui":
+			return spotifyTui.formatForSpotifyTui(scheme);
 	}
 }
 
@@ -187,10 +187,10 @@ function getFileExtension(to) {
 		case "vscode":
 			return ".vscode.json";
 		case "alacritty":
-      return ".alacritty.yml";
+			return ".alacritty.yml";
 		case "iterm2":
 			return ".itermcolors";
-    case "spotify-tui":
-      return ".spotify-tui.yml";
+		case "spotify-tui":
+			return ".spotify-tui.yml";
 	}
 }
