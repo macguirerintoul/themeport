@@ -3,12 +3,16 @@
 const fs = require("fs"); // Node.js File System module
 const handlebars = require("handlebars"); // Templating library for JavaScript
 const prompts = require("prompts"); // CLI input library
+const updateNotifier = require('update-notifier'); // Notifies users of newer versions
 
+const pkg = require('./package.json');
 const vscode = require("./vscode.js"); // Utilities for VSCode
 const vim = require("./vim.js"); // Utilities for Vim
 const alacritty = require("./alacritty.js"); // Utilities for Alacritty
 const iTerm2 = require("./iTerm2.js"); // Utilities for iTerm2
 const spotifyTui = require("./spotifyTui.js"); // Utilities for spotify-tui
+ 
+updateNotifier({pkg}).notify();
 
 // Run the program
 run();
