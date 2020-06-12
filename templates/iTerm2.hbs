@@ -2,14 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<!-- TODO: update formatting function so we can use loops here -->
-	<key>Background Color</key>
+	{{#each colours}}
+	<key>{{this.title}} Color</key>
 	<dict>
 		<key>Red Component</key>
-		<real>{{ background.red }}</real>
+		<real>{{ this.red }}</real>
 		<key>Green Component</key>
-		<real>{{ background.green }}</real>
+		<real>{{ this.green }}</real>
 		<key>Blue Component</key>
-		<real>{{ background.blue }}</real>
+		<real>{{ this.blue }}</real>
 	</dict>
+	{{/each}}
 </dict>
