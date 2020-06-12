@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --ext .js,.json .",
-		"fix": "eslint --ext .js,.json . --fix & prettier --write"
+    "lint": "eslint --ext .js .",
+		"fix": "eslint --ext .js . --fix & prettier --write"
   },
   "bin": {
     "themeverter": "./index.js"
