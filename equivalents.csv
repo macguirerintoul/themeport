@@ -1,0 +1,23 @@
+Themeverter        , VSCode                             , iTerm2           , Vim
+base.background    , colors.editor.background           , Background Color ,
+base.normal        , colors.editor.foreground           , Foreground Color , normal
+base.comment       , scopes: comment
+base.boolean       , scopes: constant.language.boolean
+base.lineNumber    , colors.editorLineNumber.foreground
+ansi.black         , colors.terminal.ansiBlack          , Ansi 0 Color     ,
+ansi.red           , colors.terminal.ansiRed            , Ansi 1 Color     ,
+ansi.green         , colors.terminal.ansiGreen          , Ansi 2 Color     ,
+ansi.yellow        , colors.terminal.ansiYellow         , Ansi 3 Color     ,
+ansi.blue          , colors.terminal.ansiBlue           , Ansi 4 Color     ,
+ansi.magenta       , colors.terminal.ansiMagenta        , Ansi 5 Color
+ansi.cyan          , colors.terminal.ansiCyan           , Ansi 6 Color     ,
+ansi.white         , colors.terminal.ansiWhite          , Ansi 7 Color     ,
+ansi.brightBlack   , colors.terminal.ansiBrightBlack    , Ansi 8 Color     ,
+ansi.brightRed     , colors.terminal.ansiBrightRed      , Ansi 9 Color     ,
+ansi.brightGreen   , colors.terminal.ansiBrightGreen    , Ansi 10 Color
+ansi.brightYellow  , colors.terminal.ansiBrightYellow   , Ansi 11 Color
+ansi.brightBlue    , colors.terminal.ansiBrightBlue     , Ansi 12 Color    ,
+ansi.brightMagenta , colors.terminal.ansiBrightMagenta  , Ansi 13 Color
+ansi.brightCyan    , colors.terminal.ansiBrightCyan     , Ansi 14 Color
+ansi.brightWhite   , colors.terminal.ansiBrightWhite    , Ansi 15 Color
+
