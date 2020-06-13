@@ -5,11 +5,11 @@ set background={{ type }}
 hi clear
 
 if exists("syntax_on")
-syntax reset
+	syntax reset
 endif
 
 let g:colors_name="{{ name }}"
 
 {{#each colors}}
-	hi {{@key}} {{#if this.guifg}}guifg={{this.guifg}}{{/if}} {{#if this.guibg}}guibg={{this.guibg}}{{/if}} {{#if this.ctermfg}}ctermfg={{this.ctermfg}}{{/if}} {{#if this.ctermbg}}ctermbg={{this.ctermbg}}{{/if}}
+hi {{@key}} {{#if this.guifg}}guifg={{this.guifg}}{{/if}} {{#if this.guibg}}guibg={{this.guibg}}{{/if}} {{#if this.ctermfg}}ctermfg={{this.ctermfg}}{{/if}} {{#if this.ctermbg}}ctermbg={{this.ctermbg}}{{/if}}
 {{/each}}

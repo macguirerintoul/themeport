@@ -1,4 +1,4 @@
-Themeverter             ,VSCode                               ,iTerm2             ,Vim
+Themeverter             ,VSCode                               ,iTerm3             ,Vim
 base.background         ,colors.editor.background             ,Background Color   ,
 base.normal             ,colors.editor.foreground             ,Foreground Color   ,Normal
 base.comment            ,scopes: comment                      ,                   ,Comment
