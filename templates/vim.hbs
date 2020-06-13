@@ -11,5 +11,5 @@ endif
 let g:colors_name="{{ name }}"
 
 {{#each colors}}
-hi {{@key}} guifg={{this.guifg}} ctermfg={{this.ctermfg}} guibg={{this.guibg}} ctermbg={{this.ctermbg}}
+	hi {{@key}} {{#if this.guifg}}guifg={{this.guifg}}{{/if}} {{#if this.guibg}}guibg={{this.guibg}}{{/if}} {{#if this.ctermfg}}ctermfg={{this.ctermfg}}{{/if}} {{#if this.ctermbg}}ctermbg={{this.ctermbg}}{{/if}}
 {{/each}}
