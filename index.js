@@ -30,9 +30,7 @@ async function run(inputArg, fromArg, toArg) {
 			message: "Which app is the scheme from?",
 			choices: [
 				{ title: "VSCode", value: "vscode" },
-				{ title: "test", value: "test" },
 			],
-			initial: 0,
 		});
 		from = userFrom.from;
 	} else {
@@ -45,9 +43,9 @@ async function run(inputArg, fromArg, toArg) {
 			name: "to",
 			message: "Which app would you like to convert to?",
 			choices: [
-				{ title: "Vim", value: "vim" },
 				{ title: "Alacritty", value: "alacritty" },
 				{ title: "iTerm2", value: "iterm2" },
+				{ title: "Vim", value: "vim" },
 			],
 		});
 		to = userTo.to;
