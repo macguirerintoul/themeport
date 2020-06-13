@@ -1,5 +1,6 @@
 const convert = require("color-convert"); // Convert colours between formats
 const vimParser = require("./vimParser.js");
+const utilities = require("./utilities.js");
 
 module.exports = {
 	makeSchemeFromVim: function (file, schemeTemplate) {
@@ -15,8 +16,8 @@ module.exports = {
 	 */
 	generateVimColorSet: function (foreground, background) {
 		return {
-			guifg: foreground,
-			guibg: background,
+			guifg: utilities.removeAlphaFromHex(foreground),
+			guibg: utilities.removeAlphaFromHex(background),
 			ctermfg: convert.hex.ansi256(foreground),
 			ctermbg: convert.hex.ansi256(background),
 		};
@@ -55,6 +56,10 @@ module.exports = {
 		formattedScheme.colors.CursorLine = this.generateVimColorSet(
 			null,
 			scheme.base.cursorLine
+		);
+		formattedScheme.colors.Visual = this.generateVimColorSet(
+			scheme.base.selectionForeground,
+			scheme.base.selectionBackground
 		);
 		return formattedScheme;
 	},
