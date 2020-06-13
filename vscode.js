@@ -63,6 +63,7 @@ module.exports = {
 			tokenColors["constant.language.boolean"].settings.foreground;
 		scheme.base.cursor = inputJson.colors["editorCursor.foreground"];
 		scheme.base.cursorLine = inputJson.colors["editor.lineHighlightBackground"];
+		scheme.base.cursorLineNumber = inputJson.colors["editorLineNumber.activeForeground"];
 		scheme.base.selectionBackground =
 			inputJson.colors["editor.selectionBackground"];
 		scheme.base.selectionForeground =

@@ -1,29 +1,30 @@
-Themeverter             ,VSCode                               ,iTerm3             ,Vim
-base.background         ,colors.editor.background             ,Background Color   ,
-base.normal             ,colors.editor.foreground             ,Foreground Color   ,Normal
-base.comment            ,scopes: comment                      ,                   ,Comment
-base.boolean            ,scopes: constant.language.boolean    ,                   ,Boolean
-base.string             ,scopes: string                       ,                   ,String
-base.lineNumber         ,colors.editorLineNumber.foreground   ,                   ,LineNr
-base.cursor             ,colors.editorCursor.foreground       ,                   ,Cursor
-base.cursorLine         ,colors.editor.lineHighlightBackground,                   ,CursorLine
-base.selectionBackground,colors.editor.selectionBackground    ,Selection Color    ,Visual (bg)
-base.selectionForeground,colors.editor.selectionForeground    ,Selected Text Color,Visual (fg)
-base.number             ,scopes: constant.numeric             ,                   ,Constant
-ansi.black              ,colors.terminal.ansiBlack            ,Ansi 0 Color       ,g:terminal_ansi_colors[0]
-ansi.red                ,colors.terminal.ansiRed              ,Ansi 1 Color       ,g:terminal_ansi_colors[1]
-ansi.green              ,colors.terminal.ansiGreen            ,Ansi 2 Color       ,g:terminal_ansi_colors[2]
-ansi.yellow             ,colors.terminal.ansiYellow           ,Ansi 3 Color       ,g:terminal_ansi_colors[3]
-ansi.blue               ,colors.terminal.ansiBlue             ,Ansi 4 Color       ,g:terminal_ansi_colors[4]
-ansi.magenta            ,colors.terminal.ansiMagenta          ,Ansi 5 Color       ,g:terminal_ansi_colors[5]
-ansi.cyan               ,colors.terminal.ansiCyan             ,Ansi 6 Color       ,g:terminal_ansi_colors[6]
-ansi.white              ,colors.terminal.ansiWhite            ,Ansi 7 Color       ,g:terminal_ansi_colors[7]
-ansi.brightBlack        ,colors.terminal.ansiBrightBlack      ,Ansi 8 Color       ,g:terminal_ansi_colors[8]
-ansi.brightRed          ,colors.terminal.ansiBrightRed        ,Ansi 9 Color       ,g:terminal_ansi_colors[9]
-ansi.brightGreen        ,colors.terminal.ansiBrightGreen      ,Ansi 10 Color      ,g:terminal_ansi_colors[10]
-ansi.brightYellow       ,colors.terminal.ansiBrightYellow     ,Ansi 11 Color      ,g:terminal_ansi_colors[11]
-ansi.brightBlue         ,colors.terminal.ansiBrightBlue       ,Ansi 12 Color      ,g:terminal_ansi_colors[12]
-ansi.brightMagenta      ,colors.terminal.ansiBrightMagenta    ,Ansi 13 Color      ,g:terminal_ansi_colors[13]
-ansi.brightCyan         ,colors.terminal.ansiBrightCyan       ,Ansi 14 Color      ,g:terminal_ansi_colors[14]
-ansi.brightWhite        ,colors.terminal.ansiBrightWhite      ,Ansi 15 Color      ,g:terminal_ansi_colors[15]
+Themeverter             ,VSCode                                  ,iTerm3             ,Vim
+base.background         ,colors.editor.background                ,Background Color   ,
+base.normal             ,colors.editor.foreground                ,Foreground Color   ,Normal
+base.comment            ,scopes: comment                         ,                   ,Comment
+base.boolean            ,scopes: constant.language.boolean       ,                   ,Boolean
+base.string             ,scopes: string                          ,                   ,String
+base.lineNumber         ,colors.editorLineNumber.foreground      ,                   ,LineNr (fg)
+base.cursor             ,colors.editorCursor.foreground          ,                   ,Cursor
+base.cursorLine         ,colors.editor.lineHighlightBackground   ,                   ,CursorLine
+base.cursorLineNumber   ,colors.editorLineNumber.activeForeground,                   ,CursorLineNr (fg)
+base.selectionBackground,colors.editor.selectionBackground       ,Selection Color    ,Visual (bg)
+base.selectionForeground,colors.editor.selectionForeground       ,Selected Text Color,Visual (fg)
+base.number             ,scopes: constant.numeric                ,                   ,Constant
+ansi.black              ,colors.terminal.ansiBlack               ,Ansi 0 Color       ,g:terminal_ansi_colors[0]
+ansi.red                ,colors.terminal.ansiRed                 ,Ansi 1 Color       ,g:terminal_ansi_colors[1]
+ansi.green              ,colors.terminal.ansiGreen               ,Ansi 2 Color       ,g:terminal_ansi_colors[2]
+ansi.yellow             ,colors.terminal.ansiYellow              ,Ansi 3 Color       ,g:terminal_ansi_colors[3]
+ansi.blue               ,colors.terminal.ansiBlue                ,Ansi 4 Color       ,g:terminal_ansi_colors[4]
+ansi.magenta            ,colors.terminal.ansiMagenta             ,Ansi 5 Color       ,g:terminal_ansi_colors[5]
+ansi.cyan               ,colors.terminal.ansiCyan                ,Ansi 6 Color       ,g:terminal_ansi_colors[6]
+ansi.white              ,colors.terminal.ansiWhite               ,Ansi 7 Color       ,g:terminal_ansi_colors[7]
+ansi.brightBlack        ,colors.terminal.ansiBrightBlack         ,Ansi 8 Color       ,g:terminal_ansi_colors[8]
+ansi.brightRed          ,colors.terminal.ansiBrightRed           ,Ansi 9 Color       ,g:terminal_ansi_colors[9]
+ansi.brightGreen        ,colors.terminal.ansiBrightGreen         ,Ansi 10 Color      ,g:terminal_ansi_colors[10]
+ansi.brightYellow       ,colors.terminal.ansiBrightYellow        ,Ansi 11 Color      ,g:terminal_ansi_colors[11]
+ansi.brightBlue         ,colors.terminal.ansiBrightBlue          ,Ansi 12 Color      ,g:terminal_ansi_colors[12]
+ansi.brightMagenta      ,colors.terminal.ansiBrightMagenta       ,Ansi 13 Color      ,g:terminal_ansi_colors[13]
+ansi.brightCyan         ,colors.terminal.ansiBrightCyan          ,Ansi 14 Color      ,g:terminal_ansi_colors[14]
+ansi.brightWhite        ,colors.terminal.ansiBrightWhite         ,Ansi 15 Color      ,g:terminal_ansi_colors[15]
 

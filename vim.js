@@ -57,6 +57,10 @@ module.exports = {
 			null,
 			scheme.base.cursorLine
 		);
+		formattedScheme.colors.CursorLineNr = this.generateVimColorSet(
+			scheme.base.cursorLineNumber,
+			null
+		);
 		formattedScheme.colors.Visual = this.generateVimColorSet(
 			scheme.base.selectionForeground,
 			scheme.base.selectionBackground
