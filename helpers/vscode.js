@@ -1,11 +1,17 @@
 const fs = require("fs"); // Node.js File System module
 const jsoncParser = require("jsonc-parser"); // Parser for JSONC (JSON with Comments) used by VSCode themes
 const prompts = require("prompts"); // Prompts module for user input
+const fetch = require('node-fetch'); // Make HTTP requests in Node
 
 module.exports = {
 	makeSchemeFromVSCode: async (file, schemeTemplate) => {
 		let scheme = schemeTemplate;
-		let inputFile = fs.readFileSync(file, "utf8"); // Read the --input file
+		let inputFile;
+		if (file.indexOf("http://")) {
+			inputFile = await fetch(file).then(r => {return r.text()});
+		} else {
+			inputFile = fs.readFileSync(file, "utf8"); // Read the --input file
+		}
 		let inputJson = jsoncParser.parse(inputFile); // Parse the --input file as a JS object
 
 		/* Turn VSCode token colours into a format that's easier to work with. */

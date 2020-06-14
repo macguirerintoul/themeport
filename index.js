@@ -7,11 +7,11 @@ const updateNotifier = require("update-notifier"); // Notifies users of newer ve
 const {argv} = require('yargs'); // Easily parse CLI arguments
 
 const pkg = require("./package.json");
-const vscode = require("./vscode.js"); // Utilities for VSCode
-const vim = require("./vim.js"); // Utilities for Vim
-const alacritty = require("./alacritty.js"); // Utilities for Alacritty
-const iTerm2 = require("./iTerm2.js"); // Utilities for iTerm2
-const spotifyTui = require("./spotifyTui.js"); // Utilities for spotify-tui
+const vscode = require("./helpers/vscode.js"); // Utilities for VSCode
+const vim = require("./helpers/vim.js"); // Utilities for Vim
+const alacritty = require("./helpers/alacritty.js"); // Utilities for Alacritty
+const iTerm2 = require("./helpers/iTerm2.js"); // Utilities for iTerm2
+const spotifyTui = require("./helpers/spotifyTui.js"); // Utilities for spotify-tui
 
 updateNotifier({ pkg }).notify();
 
@@ -155,7 +155,7 @@ function formatScheme(scheme, to) {
 function generate(formattedScheme, to) {
 	// Read the corresponding template for the 'to' application
 	const template = handlebars.compile(
-		fs.readFileSync("./templates/" + to + ".hbs", "utf8")
+		fs.readFileSync(__dirname + "/templates/" + to + ".hbs", "utf8")
 	);
 	// Render the template using Handlebars
 	let rendered = template(formattedScheme);
