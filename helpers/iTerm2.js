@@ -7,8 +7,9 @@ module.exports = {
 	makeSchemeFromiTerm2: async (file, schemeTemplate) => {
 		let scheme = schemeTemplate;
 		let inputFile = fs.readFileSync(file, "utf8");
+		// TODO refactor fetch code from vscode file into utilities and then use it here to read from file/URL
 		let inputPlist = plist.parse(inputFile);
-		console.log(inputPlist)
+		// TODO create an array in utilities where the keys are Ansi numbers and the values are mappings in scheme json (0 => black etc.) then use it here to create the scheme json, then also refactor other areas of code to use it
 	},
 	formatForiTerm2: (scheme) => {
 		let formattedScheme = {
