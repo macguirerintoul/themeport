@@ -1,14 +1,16 @@
 const fs = require("fs"); // Node.js File System module
 const jsoncParser = require("jsonc-parser"); // Parser for JSONC (JSON with Comments) used by VSCode themes
 const prompts = require("prompts"); // Prompts module for user input
-const fetch = require('node-fetch'); // Make HTTP requests in Node
+const fetch = require("node-fetch"); // Make HTTP requests in Node
 
 module.exports = {
 	makeSchemeFromVSCode: async (file, schemeTemplate) => {
 		let scheme = schemeTemplate;
 		let inputFile;
 		if (file.indexOf("http://")) {
-			inputFile = await fetch(file).then(r => {return r.text()});
+			inputFile = await fetch(file).then((r) => {
+				return r.text();
+			});
 		} else {
 			inputFile = fs.readFileSync(file, "utf8"); // Read the --input file
 		}
@@ -69,7 +71,8 @@ module.exports = {
 			tokenColors["constant.language.boolean"].settings.foreground;
 		scheme.base.cursor = inputJson.colors["editorCursor.foreground"];
 		scheme.base.cursorLine = inputJson.colors["editor.lineHighlightBackground"];
-		scheme.base.cursorLineNumber = inputJson.colors["editorLineNumber.activeForeground"];
+		scheme.base.cursorLineNumber =
+			inputJson.colors["editorLineNumber.activeForeground"];
 		scheme.base.selectionBackground =
 			inputJson.colors["editor.selectionBackground"];
 		scheme.base.selectionForeground =

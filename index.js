@@ -4,7 +4,7 @@ const fs = require("fs"); // Node.js File System module
 const handlebars = require("handlebars"); // Templating library for JavaScript
 const prompts = require("prompts"); // CLI input library
 const updateNotifier = require("update-notifier"); // Notifies users of newer versions
-const {argv} = require('yargs'); // Easily parse CLI arguments
+const { argv } = require("yargs"); // Easily parse CLI arguments
 
 const pkg = require("./package.json");
 const vscode = require("./helpers/vscode.js"); // Utilities for VSCode

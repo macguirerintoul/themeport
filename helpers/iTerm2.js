@@ -1,7 +1,7 @@
 const convert = require("color-convert");
-const plist = require('plist');
+const plist = require("plist");
 const fs = require("fs"); // Node.js File System module
-const fetch = require('node-fetch'); // Make HTTP requests in Node
+const fetch = require("node-fetch"); // Make HTTP requests in Node
 
 module.exports = {
 	makeSchemeFromiTerm2: async (file, schemeTemplate) => {
