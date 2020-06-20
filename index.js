@@ -30,6 +30,7 @@ async function run(inputArg, fromArg, toArg) {
 			message: "Which app is the scheme from?",
 			choices: [
 				{ title: "VSCode", value: "vscode" },
+				{ title: "iTerm2", value: "iterm2" },
 			],
 		});
 		from = userFrom.from;
@@ -45,6 +46,7 @@ async function run(inputArg, fromArg, toArg) {
 			choices: [
 				{ title: "Alacritty", value: "alacritty" },
 				{ title: "iTerm2", value: "iterm2" },
+				{ title: "Kitty", value: "kitty" },
 				{ title: "Vim", value: "vim" },
 			],
 		});
@@ -124,6 +126,9 @@ async function readScheme(file, from) {
 
 	if (from === "vscode") {
 		const scheme = await vscode.makeSchemeFromVSCode(file, schemeTemplate);
+		return scheme;
+	} else if (from === "iterm2") {
+		const scheme = await iTerm2.makeSchemeFromiTerm2(file, schemeTemplate);
 		return scheme;
 	}
 }

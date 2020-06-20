@@ -1,7 +1,16 @@
 const convert = require("color-convert");
+const plist = require('plist');
+const fs = require("fs"); // Node.js File System module
+const fetch = require('node-fetch'); // Make HTTP requests in Node
 
 module.exports = {
-	formatForiTerm2(scheme) {
+	makeSchemeFromiTerm2: async (file, schemeTemplate) => {
+		let scheme = schemeTemplate;
+		let inputFile = fs.readFileSync(file, "utf8");
+		let inputPlist = plist.parse(inputFile);
+		console.log(inputPlist)
+	},
+	formatForiTerm2: (scheme) => {
 		let formattedScheme = {
 			name: scheme.name,
 			colours: {},
