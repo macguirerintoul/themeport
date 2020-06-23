@@ -32,9 +32,9 @@ This table represents which applications Themeverter can convert from/to. The y 
 | From \ To | VSCode  | Vim | Alacritty | iTerm2 | Terminal.app  | Kitty | spotify-tui |
 |------------------|---------------------------------------------------------------|-----|-----------|--------|---------------------------------------------------------------|-------|------------|
 | **VSCode**       | ⬜                                                           | ☑️   | ☑️        | ☑️     | [#5](https://github.com/macguirerintoul/themeverter/issues/5) | 🗺      | ☑️            |
-| **Vim**          | [#6](https://github.com/macguirerintoul/themeverter/issues/6) | ⬜ |           |        |                                                               |       |             |
-| **Alacritty**    | [#7](https://github.com/macguirerintoul/themeverter/issues/7) |     | ⬜           |        |                                                               |       |             |
-| **iTerm2**       | [#8](https://github.com/macguirerintoul/themeverter/issues/8) |     |           |  ⬜      |                                                               | ☑️     |             |
+| **Vim**          | [#6](https://github.com/macguirerintoul/themeverter/issues/6) | ⬜ |  🗺         |  🗺      |      🗺                                                         |    🗺   |     🗺        |
+| **Alacritty**    | ⬛️ | ⬛️    | ⬜           |    🗺    |     🗺                                                          |   🗺    |   🗺          |
+| **iTerm2**       | ⬛️ |  ⬛️   |    🗺       |  ⬜      |         🗺                                                      | ☑️     |             |
 | **Terminal.app** | ⬛️ | ⬛️    |  🗺         | 🗺       |  ⬜                                                             |       |             |
 | **spotify-tui**  | ⬛️                                                             | ⬛️   | ⬛️         | ⬛️      | ⬛️                                                             | ⬛️ |   ⬛️          |
 
