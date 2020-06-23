@@ -25,7 +25,7 @@ When run without any arguments, `themeverter` will runs a wizard that walks you 
 
 ## Support table
 
-This table represents which applications Themeverter can convert from/to. The y axis represents the source app and the y axis represents the destination app.
+This table represents which applications Themeverter can convert from/to. The y axis represents the source app and the x axis represents the destination app.
 
 
 
