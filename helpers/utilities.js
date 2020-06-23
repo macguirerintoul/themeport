@@ -1,4 +1,22 @@
 module.exports = {
+	ansiMapArray: [
+		"black",
+		"red",
+		"green",
+		"yellow",
+		"blue",
+		"magenta",
+		"cyan",
+		"white",
+		"brightBlack",
+		"brightRed",
+		"brightGreen",
+		"brightYellow",
+		"brightBlue",
+		"brightMagenta",
+		"brightCyan",
+		"brightWhite"
+	],
 	/**
 	 * Sanitize a hex string to remove the alpha channel.
 	 *
