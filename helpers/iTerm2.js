@@ -10,14 +10,25 @@ module.exports = {
 		let inputFile = fs.readFileSync(file, "utf8");
 		// TODO refactor fetch code from vscode file into utilities and then use it here to read from file/URL
 		let inputPlist = plist.parse(inputFile);
+
+		scheme.name = file.substr(0, file.indexOf(".itermcolors"));
+
+		// Ansi colours
 		utilities.ansiMapArray.forEach((element, index) => {
 			const colour = inputPlist["Ansi " + index + " Color"];
 			const red = colour["Red Component"] * 255;
 			const green = colour["Green Component"] * 255;
 			const blue = colour["Blue Component"] * 255;
-			scheme.ansi[element] = convert.rgb.hex([red, green, blue]);
+			scheme.ansi[element] = "#" +  convert.rgb.hex([red, green, blue]);
 		});
-		console.log(scheme)
+
+		// TODO convert these like above
+		scheme.base.normal = inputPlist["Foreground Color"];
+		scheme.base.background = inputPlist["Background Color"];
+		scheme.base.selectionBackground = inputPlist["Selection Color"];
+		scheme.base.selectionForeground = inputPlist["Selected Text Color"];
+
+		return scheme;
 	},
 	formatForiTerm2: (scheme) => {
 		let formattedScheme = {

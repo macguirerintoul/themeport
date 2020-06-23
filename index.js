@@ -12,6 +12,7 @@ const vim = require("./helpers/vim.js"); // Utilities for Vim
 const alacritty = require("./helpers/alacritty.js"); // Utilities for Alacritty
 const iTerm2 = require("./helpers/iTerm2.js"); // Utilities for iTerm2
 const spotifyTui = require("./helpers/spotifyTui.js"); // Utilities for spotify-tui
+const kitty = require("./helpers/kitty.js"); // Utilities for Kitty
 
 updateNotifier({ pkg }).notify();
 
@@ -147,6 +148,8 @@ function formatScheme(scheme, to) {
 			return alacritty.formatForAlacritty(scheme);
 		case "iterm2":
 			return iTerm2.formatForiTerm2(scheme);
+		case "kitty":
+			return kitty.formatForKitty(scheme);
 		case "spotify-tui":
 			return spotifyTui.formatForSpotifyTui(scheme);
 	}
@@ -194,6 +197,8 @@ function getFileExtension(to) {
 			return ".alacritty.yml";
 		case "iterm2":
 			return ".itermcolors";
+		case "kitty":
+			return ".conf";
 		case "spotify-tui":
 			return ".spotify-tui.yml";
 	}
