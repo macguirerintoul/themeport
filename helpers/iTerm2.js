@@ -5,7 +5,8 @@ const fetch = require('node-fetch'); // Make HTTP requests in Node
 const utilities = require("./utilities");
 
 module.exports = {
-	makeSchemeFromiTerm2: async (file, schemeTemplate) => {
+	// TODO document
+	makeSchemeFromiTerm2: async function(file, schemeTemplate) {
 		let scheme = schemeTemplate;
 		let inputFile = fs.readFileSync(file, "utf8");
 		// TODO refactor fetch code from vscode file into utilities and then use it here to read from file/URL
@@ -16,20 +17,29 @@ module.exports = {
 		// Ansi colours
 		utilities.ansiMapArray.forEach((element, index) => {
 			const colour = inputPlist["Ansi " + index + " Color"];
-			const red = colour["Red Component"] * 255;
-			const green = colour["Green Component"] * 255;
-			const blue = colour["Blue Component"] * 255;
-			scheme.ansi[element] = "#" +  convert.rgb.hex([red, green, blue]);
+			scheme.ansi[element] = this.colourToHex(colour);
 		});
 
-		// TODO convert these like above
-		scheme.base.normal = inputPlist["Foreground Color"];
-		scheme.base.background = inputPlist["Background Color"];
-		scheme.base.selectionBackground = inputPlist["Selection Color"];
-		scheme.base.selectionForeground = inputPlist["Selected Text Color"];
+		scheme.base.normal = this.colourToHex(inputPlist["Foreground Color"]);
+		scheme.base.background = this.colourToHex(inputPlist["Background Color"]);
+		scheme.base.selectionBackground = this.colourToHex(inputPlist["Selection Color"]);
+		scheme.base.selectionForeground = this.colourToHex(inputPlist["Selected Text Color"]);
 
 		return scheme;
 	},
+	/**
+	 * Convert an iTerm2 colour (RGB separate in 0-1 range) to a hex code.
+	 *
+	 * @param {object} colour - the colour parsed from the plist
+	 * @return {string} the colour in hex format
+	 */
+	colourToHex: function(colour) {
+		const red = colour["Red Component"] * 255;
+		const green = colour["Green Component"] * 255;
+		const blue = colour["Blue Component"] * 255;
+		return "#" + convert.rgb.hex([red, green, blue]);
+	},
+	// TODO document
 	formatForiTerm2: (scheme) => {
 		let formattedScheme = {
 			name: scheme.name,
