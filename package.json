@@ -9,7 +9,7 @@
 		"fix": "eslint --ext .js . --fix & prettier --write ."
 	},
 	"bin": {
-		"themeverter": "./index.js"
+		"themeport": "./index.js"
 	},
 	"author": "Macguire Rintoul (https://macguire.me)",
 	"license": "MIT",
