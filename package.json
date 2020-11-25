@@ -16,7 +16,7 @@
 	"dependencies": {
 		"color-convert": "2.0.1",
 		"handlebars": "4.7.6",
-		"jsonc-parser": "2.3.0",
+		"jsonc-parser": "3.0.0",
 		"node-fetch": "^2.6.0",
 		"plist": "^3.0.1",
 		"prompts": "2.3.2",
