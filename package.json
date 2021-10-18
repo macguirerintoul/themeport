@@ -19,7 +19,7 @@
 		"jsonc-parser": "2.3.0",
 		"node-fetch": "^2.6.0",
 		"plist": "^3.0.1",
-		"prompts": "2.3.2",
+		"prompts": "2.4.2",
 		"update-notifier": "4.1.0",
 		"yargs": "^15.3.1"
 	},
